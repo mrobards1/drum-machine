@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#drum-machine {
+    background-color: gray;
+    height: 200px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 400px;
+    height: 100%;
+    gap: 5px;
+    
+  }
+  
+  .drum-pad {
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+    background-color: #999;
+    color: white;
+    border-radius: 3px;
+    padding: 0;
+    margin-left: 5px;
+  }
+
+  .drum-pad:active {
+    background-color: white;
+    color: gray;
+  }
+
+  #display {
+    height: 60px;
+    width: 175px;
+    background-color: beige;
+    position: absolute;
+    right: 15px;
+    top: 50%; 
+    transform: translateY(-50%); 
+    border-radius: 3px;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    font-size: 30px;
+  }
