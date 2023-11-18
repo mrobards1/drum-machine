@@ -24,18 +24,18 @@
     padding: 15px;
     position: relative;
     border-radius: 10px;
-  }
-  
-  .gridContainer {
+}
+
+.gridContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     max-width: 400px;
     height: 100%;
     gap: 5px;
-    
-  }
-  
-  .drum-pad {
+
+}
+
+.drum-pad {
     width: 60px;
     height: 60px;
     font-size: 40px;
@@ -47,24 +47,66 @@
     border-radius: 3px;
     padding: 0;
     margin-left: 5px;
-  }
+}
 
-  .drum-pad:active {
+.drum-pad:active {
     background-color: white;
     color: gray;
-  }
+}
 
-  #display {
+#display {
     height: 60px;
     width: 175px;
     background-color: beige;
     position: absolute;
     right: 15px;
-    top: 50%; 
-    transform: translateY(-50%); 
+    top: 50%;
+    transform: translateY(-50%);
     border-radius: 3px;
     display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    justify-content: center;
+    /* Center horizontally */
     font-size: 30px;
+}
+
+.sliderContainer {
+    position: absolute;
+    top: 70%;
+    right: 15px;
+    color: black;
+    width: 175px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    height: 15px;
+    border-radius: 3px;
+    background: black;
   }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; /* Adjust the width of the thumb */
+    height: 20px; /* Adjust the height of the thumb */
+    background-color: orange; /* Change the color of the thumb */
+    border-radius: 3px; /* Optional: Make the thumb circular */
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    width: 20px; /* Adjust the width of the thumb */
+    height: 20px; /* Adjust the height of the thumb */
+    background-color: orange; /* Change the color of the thumb */
+    border-radius: 3px; /* Optional: Make the thumb circular */
+  }
+
+:focus {
+    outline: none;
+
+}
