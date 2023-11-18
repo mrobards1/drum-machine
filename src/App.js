@@ -1,12 +1,15 @@
 import './App.css';
 import React from 'react';
 
+
+
+
 const DrumMachine = (props) => (
   <div className="container">
     <div id="drum-machine">
       <div id="display">{props.display}</div>
       <div className="gridContainer">
-        <button className="drum-pad" id="Heater-1" onClick={props.handleClick} accesskey="Q">Q</button>
+        <button className="drum-pad" id="Heater-1" onClick={props.handleClick}>Q</button>
         <button className="drum-pad" id="Heater-2" onClick={props.handleClick}>W</button>
         <button className="drum-pad" id="Heater-3" onClick={props.handleClick}>E</button>
         <button className="drum-pad" id="Heater-4" onClick={props.handleClick}>A</button>
@@ -16,9 +19,14 @@ const DrumMachine = (props) => (
         <button className="drum-pad" id="Kick" onClick={props.handleClick}>X</button>
         <button className="drum-pad" id="Closed-HH" onClick={props.handleClick}>C</button>
       </div>
+      <div className="sliderContainer">
+        <input type="range" min="1" max="100" value={props.volume} class="slider" id="volume-slider" onChange={props.handleVolumeChange}></input>
+      </div>
     </div>
   </div>
 );
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -51,71 +59,92 @@ class App extends React.Component {
       'Closed-HH': './sounds/Closed-HH.mp3'
     };
     const audio = new Audio(soundFiles[id]);
+    audio.volume = this.state.volume / 100;
     audio.play();
-    console.log("test"+ soundFiles['Heater-1']);
   };
 
-  
+  handleVolumeChange = (event) => {
+    const newVolume = event.target.value;
+    this.setState({
+      volume: newVolume,
+    })
+  }
 
   handleClick = (event) => {
     const buttonId = event.target.id;
     this.setState({
-      display: buttonId
+      display: buttonId,
+      volume: 50,
     });
     this.playSound(buttonId);
   };
 
+ 
   handleKeyPress = (event) => {
-    // Check if the pressed key corresponds to a button
-    switch (event.key.toUpperCase()) {
-      case 'Q':
-      case '1':
-        document.getElementById('Heater-1').click();
-        break;
-      case 'W':
-      case '2':
-        document.getElementById('Heater-2').click();
-        break;
-      case 'E':
-      case '3':
-        document.getElementById('Heater-3').click();
-        break;
-      case 'A':
-        case '4':
-        document.getElementById('Heater-4').click();
-        break;
-      case 'S':
-      case '5':
-        document.getElementById('Clap').click();
-        break;
-      case 'D':
-        case '6':
-        document.getElementById('Open-HH').click();
-        break;
-      case 'Z':
-      case '7':
-        document.getElementById('Kick-n-Hat').click();
-        break;
-      case 'X':
-        case '8':
-        document.getElementById('Kick').click();
-        break;
-      case 'C':
-      case '9':
-        document.getElementById('Closed-HH').click();
+    const key = event.key.toUpperCase();
+    const buttonId = this.getKeyButtonId(key);
   
-        break;
-
-      
-
-      default:
-        break;
+    if (buttonId) {
+      const button = document.getElementById(buttonId);
+  
+      if (button) {
+        button.style.backgroundColor = 'white';
+        button.style.color = 'gray';
+        button.style.border = 'none';
+        setTimeout(() => {
+          // Restore original styles
+          button.style.backgroundColor = '';
+          button.style.color = '';
+  
+          // Trigger a click on the button
+          button.click();
+        }, 100);
+      }
     }
   };
-
+  
+  getKeyButtonId = (key) => {
+    // Map the key to the corresponding button id
+    switch (key) {
+      case 'Q':
+      case '1':
+        return 'Heater-1';
+      case 'W':
+      case '2':
+        return 'Heater-2';
+      case 'E':
+      case '3':
+        return 'Heater-3';
+      case 'A':
+      case '4':
+        return 'Heater-4';
+      case 'S':
+      case '5':
+        return 'Clap';
+      case 'D':
+      case '6':
+        return 'Open-HH';
+      case 'Z':
+      case '7':
+        return 'Kick-n-Hat';
+      case 'X':
+      case '8':
+        return 'Kick';
+      case 'C':
+      case '9':
+        return 'Closed-HH';
+      default:
+        return null;
+    }
+  };
+  
   render() {
     return (
-      <DrumMachine handleClick={this.handleClick} display={this.state.display}/>
+      <DrumMachine 
+        handleClick={this.handleClick} 
+        handleSound={this.handleSound} 
+        display={this.state.display} 
+        handleVolumeChange ={this.handleVolumeChange}/>
     );
   }
 }
