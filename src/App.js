@@ -33,6 +33,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       display: '',
+      volume: 50,
     }
   };
   
@@ -88,8 +89,8 @@ class App extends React.Component {
       const button = document.getElementById(buttonId);
   
       if (button) {
-        button.style.backgroundColor = 'white';
-        button.style.color = 'gray';
+        button.style.backgroundColor = '#d9dad7';
+        button.style.color = '#d9dad7';
         button.style.border = 'none';
         setTimeout(() => {
           // Restore original styles
