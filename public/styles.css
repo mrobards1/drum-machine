@@ -17,8 +17,8 @@
 
 #drum-machine {
     background-color: #c24d2c;
-    height: 200px;
-    width: 400px;
+    height: 300px;
+    width: 600px;
     display: flex;
     align-items: center;
     padding: 15px;
@@ -29,15 +29,15 @@
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    max-width: 400px;
+    max-width: 600px;
     height: 100%;
-    gap: 5px;
+    gap: 7.5px;
 
 }
 
 .drum-pad {
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
     font-size: 40px;
     background-color: #3e4a61;
     border: none;
@@ -54,11 +54,11 @@
 }
 
 #display {
-    height: 60px;
-    width: 175px;
+    height: 90px;
+    width: 262px;
     background-color: #d9dad7;
     position: absolute;
-    right: 15px;
+    right: 22.5px;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 3px;
@@ -72,8 +72,8 @@
 .sliderContainer {
     position: absolute;
     top: 70%;
-    right: 15px;
-    width: 175px;
+    right: 22.5px;
+    width: 262px;
 }
 
 input[type="range"] {

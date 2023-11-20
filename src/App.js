@@ -74,8 +74,7 @@ class App extends React.Component {
   handleClick = (event) => {
     const buttonId = event.target.id;
     this.setState({
-      display: buttonId,
-      volume: 50,
+      display: buttonId
     });
     this.playSound(buttonId);
   };
